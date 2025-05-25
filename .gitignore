@@ -103,4 +103,7 @@ pytest.ini
 # Временные файлы
 *.tmp
 *.bak
-*.backup 
+*.backup
+
+# New file to be ignored
+.mcp.json 
