@@ -1,4 +1,6 @@
-# Enhanced Sequential Thinking Server 🧠
+# MCP Thinking
+
+Enhanced MCP Server: Advanced Tool for LLM Sequential Thinking
 
 An advanced Model Context Protocol (MCP) server designed to facilitate and enhance the structured thinking processes of Large Language Models (LLMs). It provides a robust framework for reasoning chains, tree-like thought structures, metacognitive analysis, and adaptive planning.
 
@@ -21,51 +23,19 @@ An advanced Model Context Protocol (MCP) server designed to facilitate and enhan
 - **Session Management:** Tools for exporting and analyzing entire thinking sessions
 - **Multi-language Support:** Localized outputs and analysis markers via `localization.py` and `localization_markers.py`
 
-## 📦 Installation
+## 🚀 Quick Start
 
-### Prerequisites
-Before you begin, ensure you have the following installed:
-- [Python 3.13+](https://www.python.org/downloads/)
-- [pip](https://pip.pypa.io/en/stable/installation/) (usually comes with Python)
-- [Docker](https://docs.docker.com/get-docker/) (for Docker installation)
+```bash
+# Clone the repository
+git clone https://github.com/VitalyMalakanov/mcp-thinking.git
+cd mcp-thinking
 
-### Local Installation
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/VitalyMalakanov/nhanced_sequential_thinking_server.git
-   cd nhanced_sequential_thinking_server
-   ```
+# Install dependencies
+pip install -r requirements.txt
 
-2. **Create a virtual environment (recommended):**
-   ```bash
-   # Windows
-   python -m venv venv
-   .\venv\Scripts\activate
-
-   # macOS/Linux
-   python -m venv venv
-   source venv/bin/activate
-   ```
-
-3. **Install dependencies:**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-### Docker Installation
-1. **Build and start the container:**
-   ```bash
-   # Start in foreground
-   docker-compose up --build
-
-   # Start in background
-   docker-compose up -d --build
-   ```
-
-2. **Stop the container:**
-   ```bash
-   docker-compose down
-   ```
+# Start the server
+python enhanced_sequential_thinking_server.py
+```
 
 ## 🚀 Usage
 
@@ -880,10 +850,11 @@ Common issues and their solutions:
 ### Core Endpoints
 
 #### SSE Connection
-```http
-GET /sse
+
+```bash
+# Connect to the MCP Thinking server
+curl http://localhost:8000/sse
 ```
-Establishes Server-Sent Events connection for real-time communication.
 
 #### Message Processing
 ```http
@@ -954,10 +925,9 @@ Processes thinking requests within a session.
 ## 🌟 Community and Support
 
 ### Getting Help
-- **GitHub Issues:** Report bugs and request features
-- **Discussions:** Join community discussions
-- **Documentation:** Read the detailed docs
-- **Examples:** Check the examples directory
+
+* **GitHub Issues:** Report bugs and request features at [mcp-thinking issues](https://github.com/VitalyMalakanov/mcp-thinking/issues)
+* **Discussions:** Join community discussions at [mcp-thinking discussions](https://github.com/VitalyMalakanov/mcp-thinking/discussions)
 
 ### Contributing
 We welcome contributions! Here's how you can help:
@@ -985,15 +955,15 @@ We welcome contributions! Here's how you can help:
 
 ## 📊 Project Statistics
 
-![GitHub Stars](https://img.shields.io/github/stars/VitalyMalakanov/nhanced_sequential_thinking_server?style=social)
-![GitHub Forks](https://img.shields.io/github/forks/VitalyMalakanov/nhanced_sequential_thinking_server?style=social)
-![GitHub Issues](https://img.shields.io/github/issues/VitalyMalakanov/nhanced_sequential_thinking_server)
-![GitHub Pull Requests](https://img.shields.io/github/issues-pr/VitalyMalakanov/nhanced_sequential_thinking_server)
-![GitHub License](https://img.shields.io/github/license/VitalyMalakanov/nhanced_sequential_thinking_server)
+![GitHub Stars](https://img.shields.io/github/stars/VitalyMalakanov/mcp-thinking?style=social)
+![GitHub Forks](https://img.shields.io/github/forks/VitalyMalakanov/mcp-thinking?style=social)
+![GitHub Issues](https://img.shields.io/github/issues/VitalyMalakanov/mcp-thinking)
+![GitHub Pull Requests](https://img.shields.io/github/issues-pr/VitalyMalakanov/mcp-thinking)
+![GitHub License](https://img.shields.io/github/license/VitalyMalakanov/mcp-thinking)
 
 ## 🔍 Keywords and Tags
 
-#AI #MachineLearning #LLM #Reasoning #CognitiveComputing #Python #AsyncIO #FastAPI #MCP #ThinkingServer #SequentialThinking #Metacognition #CognitiveArchitecture #AIReasoning #ThoughtChains #DecisionMaking #ProblemSolving #CognitiveScience #ArtificialIntelligence #MachineReasoning
+#AI #MachineLearning #LLM #Reasoning #CognitiveComputing #Python #AsyncIO #FastAPI #MCP #ThinkingEngine #SequentialThinking #Metacognition #CognitiveArchitecture #AIReasoning #ThoughtChains #DecisionMaking #ProblemSolving #CognitiveScience #ArtificialIntelligence #MachineReasoning
 
 ## 📝 Changelog
 
