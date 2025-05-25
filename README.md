@@ -1013,23 +1013,7 @@ We welcome contributions! Here's how you can help:
 
 ## 🔮 Roadmap
 
-### Short Term (1-3 months)
-- [ ] Enhanced session analytics
-- [ ] Additional thinking modes
-- [ ] Improved error handling
-- [ ] Performance optimizations
-
-### Medium Term (3-6 months)
-- [ ] Distributed deployment support
-- [ ] Advanced caching mechanisms
-- [ ] Extended API capabilities
-- [ ] Additional export formats
-
-### Long Term (6-12 months)
-- [ ] Machine learning integration
-- [ ] Advanced pattern recognition
-- [ ] Custom thinking strategies
-- [ ] Enhanced visualization tools
+*План развития проекта будет опубликован в ближайшее время.*
 
 ## 📄 License
 
