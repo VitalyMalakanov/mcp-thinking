@@ -828,7 +828,7 @@ Common issues and their solutions:
 ### Connection Issues
 1. **Connection Reset Errors**
    ```log
-   ConnectionResetError: [WinError 10054] Удаленный хост принудительно разорвал существующее подключение
+   ConnectionResetError: [WinError 10054] Remote host forcibly closed the connection
    ```
    - Check client network stability
    - Verify server timeout settings
@@ -1002,7 +1002,7 @@ We welcome contributions! Here's how you can help:
 
 ## 🔮 Roadmap
 
-*План развития проекта будет опубликован в ближайшее время.*
+*Project roadmap will be published soon.*
 
 ## 📄 License
 
