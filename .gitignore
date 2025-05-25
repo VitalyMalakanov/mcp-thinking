@@ -70,9 +70,37 @@ venv.bak/
 # Logs
 *.log
 thinking_server.log
+logs/
 
 # Mac
 .DS_Store
 
 # Windows
-Thumbs.db 
+Thumbs.db
+
+# Кэш Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Кэш pytest
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Тестовые файлы
+test_*.py
+tests/
+request.json
+pytest.ini
+
+# IDE и редакторы
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Временные файлы
+*.tmp
+*.bak
+*.backup 
