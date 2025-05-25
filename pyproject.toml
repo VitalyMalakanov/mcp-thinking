@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "enhanced-sequential-thinking-server"
+version = "0.1.0"
+description = "Advanced server for structured LLM thinking (MCP)"
+authors = [
+    { name = "[Your Name]" }
+]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "mcp[cli,http]",
+    "colorama",
+    "numpy",
+    "scikit-learn",
+    "textstat",
+    "fastapi",
+    "uvicorn"
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[project.urls]
+Homepage = "https://github.com/yourusername/yourrepo" 

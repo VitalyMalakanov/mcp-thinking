@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  mcp-server:
+    build: .
+    container_name: enhanced-mcp-server
+    ports:
+      # Проброс порта хоста:контейнера.
+      # Порт контейнера здесь должен соответствовать тому,
+      # что мы передаем в mcp_instance.run() (т.е. 8000).
+      - "${MCP_SERVER_PORT:-8000}:8000" 
+    environment:
+      # MCP_SERVER_PORT используется в Python-скрипте для определения порта.
+      # Uvicorn теперь получает host и port напрямую из mcp_instance.run().
+      - MCP_SERVER_PORT=8000
+      - LANG=ru_RU.UTF-8
+      # УДАЛЕНЫ: UVICORN_HOST и UVICORN_PORT - они больше не нужны здесь.
+    volumes:
+      - .:/app
+      - ./logs:/app/logs
+    restart: unless-stopped
+    healthcheck:
+      # Healthcheck по-прежнему проверяет TCP-порт 8000 внутри контейнера.
+      test: ["CMD-SHELL", "python -c \"import socket; s = socket.socket(socket.AF_INET, socket.SOCK_STREAM); s.connect(('localhost', 8000)); s.close()\""]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s

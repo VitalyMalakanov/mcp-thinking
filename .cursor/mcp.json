@@ -1,0 +1,22 @@
+{
+  "mcpServers": {
+    "playwright-mcp": {
+      "command": "cmd",
+      "args": [
+        "/c",
+        "npx",
+        "-y",
+        "@smithery/cli@latest",
+        "run",
+        "@microsoft/playwright-mcp",
+        "--key",
+        "4565f5df-ab25-404a-a9d2-fa5ea7fb334d"
+      ]
+    },
+    "enhanced-sequential-thinking-server": {
+      "name": "enhanced-sequential-thinking-server",
+      "url": "http://localhost:8000/sse",
+      "description": "Сервер для расширенного последовательного мышления с поддержкой анализа качества мыслей, обнаружения когнитивных искажений и различных стратегий мышления"
+    }
+  }
+} 

@@ -1,0 +1,9 @@
+mcp[cli,http]
+colorama
+numpy
+scikit-learn
+textstat
+pytest
+fastapi
+uvicorn
+fastmcp 
