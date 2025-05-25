@@ -905,80 +905,6 @@ Common issues and their solutions:
 }
 ```
 
-## 🌟 Community and Support
-
-### Getting Help
-
-* **GitHub Issues:** Report bugs and request features at [mcp-thinking issues](https://github.com/VitalyMalakanov/mcp-thinking/issues)
-* **Discussions:** Join community discussions at [mcp-thinking discussions](https://github.com/VitalyMalakanov/mcp-thinking/discussions)
-
-### Contributing
-We welcome contributions! Here's how you can help:
-
-1. **Code Contributions**
-   - Fork the repository
-   - Create a feature branch
-   - Submit a pull request
-
-2. **Documentation**
-   - Improve existing docs
-   - Add examples
-   - Fix typos
-
-3. **Testing**
-   - Write unit tests
-   - Report bugs
-   - Suggest improvements
-
-### Community Guidelines
-- Be respectful and inclusive
-- Follow the code of conduct
-- Help others learn
-- Share your experiences
-
-## 📊 Project Statistics
-
-[![GitHub Stars](https://img.shields.io/github/stars/VitalyMalakanov/mcp-thinking?style=social)](https://github.com/VitalyMalakanov/mcp-thinking/stargazers)
-[![GitHub Forks](https://img.shields.io/github/forks/VitalyMalakanov/mcp-thinking?style=social)](https://github.com/VitalyMalakanov/mcp-thinking/network/members)
-[![GitHub Issues](https://img.shields.io/github/issues/VitalyMalakanov/mcp-thinking)](https://github.com/VitalyMalakanov/mcp-thinking/issues)
-[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/VitalyMalakanov/mcp-thinking)](https://github.com/VitalyMalakanov/mcp-thinking/pulls)
-[![License: MIT](https://img.shields.io/github/license/VitalyMalakanov/mcp-thinking)](https://github.com/VitalyMalakanov/mcp-thinking/blob/master/LICENSE)
-
-## 🔍 Keywords
-
-#AI #MachineLearning #LLM #Reasoning #CognitiveComputing #Python #AsyncIO #FastAPI #MCP #ThinkingEngine #SequentialThinking #Metacognition #CognitiveArchitecture #AIReasoning #ThoughtChains #DecisionMaking #ProblemSolving #CognitiveScience #ArtificialIntelligence #MachineReasoning
-
-## 📝 Changelog
-
-### [1.0.0] - 2024-05-25
-- Initial release
-- Core thinking server functionality
-- Session management
-- Multiple thinking modes
-- Metacognitive analysis
-- Export capabilities
-
-### [0.9.0] - 2024-05-20
-- Beta release
-- Basic thinking server
-- Initial session support
-- Core thinking modes
-
-## 🔮 Roadmap
-
-*Project roadmap will be published soon.*
-
-## 📄 License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- FastAPI for the excellent web framework
-- Pydantic for data validation
-- Uvicorn for ASGI server
-- The open-source community for inspiration and support
-
 ## 💡 Use Cases
 
 ### 1. Complex Problem Solving
@@ -1140,3 +1066,77 @@ Each use case demonstrates how AI agents can leverage the MCP protocol to:
 - Export results in various formats
 
 The MCP standard ensures consistent, reliable, and efficient interaction between AI agents and the thinking server, enabling complex cognitive tasks with high precision and adaptability.
+
+## 🌟 Community and Support
+
+### Getting Help
+
+* **GitHub Issues:** Report bugs and request features at [mcp-thinking issues](https://github.com/VitalyMalakanov/mcp-thinking/issues)
+* **Discussions:** Join community discussions at [mcp-thinking discussions](https://github.com/VitalyMalakanov/mcp-thinking/discussions)
+
+### Contributing
+We welcome contributions! Here's how you can help:
+
+1. **Code Contributions**
+   - Fork the repository
+   - Create a feature branch
+   - Submit a pull request
+
+2. **Documentation**
+   - Improve existing docs
+   - Add examples
+   - Fix typos
+
+3. **Testing**
+   - Write unit tests
+   - Report bugs
+   - Suggest improvements
+
+### Community Guidelines
+- Be respectful and inclusive
+- Follow the code of conduct
+- Help others learn
+- Share your experiences
+
+## 📊 Project Statistics
+
+[![GitHub Stars](https://img.shields.io/github/stars/VitalyMalakanov/mcp-thinking?style=social)](https://github.com/VitalyMalakanov/mcp-thinking/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/VitalyMalakanov/mcp-thinking?style=social)](https://github.com/VitalyMalakanov/mcp-thinking/network/members)
+[![GitHub Issues](https://img.shields.io/github/issues/VitalyMalakanov/mcp-thinking)](https://github.com/VitalyMalakanov/mcp-thinking/issues)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/VitalyMalakanov/mcp-thinking)](https://github.com/VitalyMalakanov/mcp-thinking/pulls)
+[![License: MIT](https://img.shields.io/github/license/VitalyMalakanov/mcp-thinking)](https://github.com/VitalyMalakanov/mcp-thinking/blob/master/LICENSE)
+
+## 🔍 Keywords
+
+#AI #MachineLearning #LLM #Reasoning #CognitiveComputing #Python #AsyncIO #FastAPI #MCP #ThinkingEngine #SequentialThinking #Metacognition #CognitiveArchitecture #AIReasoning #ThoughtChains #DecisionMaking #ProblemSolving #CognitiveScience #ArtificialIntelligence #MachineReasoning
+
+## 📝 Changelog
+
+### [1.0.0] - 2024-05-25
+- Initial release
+- Core thinking server functionality
+- Session management
+- Multiple thinking modes
+- Metacognitive analysis
+- Export capabilities
+
+### [0.9.0] - 2024-05-20
+- Beta release
+- Basic thinking server
+- Initial session support
+- Core thinking modes
+
+## 🔮 Roadmap
+
+*Project roadmap will be published soon.*
+
+## 📄 License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- FastAPI for the excellent web framework
+- Pydantic for data validation
+- Uvicorn for ASGI server
+- The open-source community for inspiration and support
