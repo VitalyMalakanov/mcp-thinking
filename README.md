@@ -1,8 +1,27 @@
 # MCP Thinking
 
-Enhanced MCP Server: Advanced Tool for LLM Sequential Thinking
+A powerful Model Context Protocol (MCP) server that enhances Large Language Models (LLMs) with advanced sequential thinking capabilities. Built on the Model Context Protocol standard, this server enables AI agents to perform structured reasoning, maintain context, and execute complex cognitive tasks with high precision.
 
-An advanced Model Context Protocol (MCP) server designed to facilitate and enhance the structured thinking processes of Large Language Models (LLMs). It provides a robust framework for reasoning chains, tree-like thought structures, metacognitive analysis, and adaptive planning.
+## What is MCP?
+
+Model Context Protocol (MCP) is a standardized framework for managing AI agent interactions, context handling, and tool execution. It provides a robust foundation for building sophisticated AI applications that can:
+
+- Maintain coherent conversation context
+- Execute complex reasoning chains
+- Manage tool interactions
+- Handle multi-step cognitive processes
+- Adapt thinking strategies dynamically
+
+## Key Features
+
+- **Advanced Sequential Thinking:** Structured reasoning with 19 distinct thinking modes
+- **Context Management:** Robust session handling with UUID-based identification
+- **Metacognitive Analysis:** Deep insights into reasoning quality and process
+- **Adaptive Planning:** Dynamic strategy adjustment based on context
+- **Multi-modal Reasoning:** Support for linear, tree, dialectical, and other thinking patterns
+- **Quality Assessment:** Automatic evaluation of thought clarity and coherence
+- **Session Management:** Comprehensive tools for session analysis and export
+- **Multi-language Support:** Built-in localization for diverse language needs
 
 ## 👨‍💻 Author
 [Vitaly Malakanov](https://github.com/VitalyMalakanov)
@@ -25,17 +44,17 @@ An advanced Model Context Protocol (MCP) server designed to facilitate and enhan
 
 ## 🚀 Quick Start
 
-```bash
+    ```bash
 # Clone the repository
 git clone https://github.com/VitalyMalakanov/mcp-thinking.git
 cd mcp-thinking
 
 # Install dependencies
-pip install -r requirements.txt
+    pip install -r requirements.txt
 
 # Start the server
 python enhanced_sequential_thinking_server.py
-```
+    ```
 
 ## 🚀 Usage
 
@@ -420,8 +439,8 @@ The Enhanced Sequential Thinking Server supports 19 distinct thinking modes, eac
   ```python
   EnhancedThinkingInput(
       thought="Analyzing the impact of climate change on global supply chains: direct effects, feedback loops, and systemic risks",
-      thought_type=ThoughtType.ANALYSIS,
-      strategy=ThinkingStrategy.SYSTEMIC,
+                thought_type=ThoughtType.ANALYSIS,
+                strategy=ThinkingStrategy.SYSTEMIC,
       tags=["systems", "climate"]
   )
   ```
