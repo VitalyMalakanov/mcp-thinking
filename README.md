@@ -1,265 +1,165 @@
-# MCP Thinking
+# MCP Thinking 🤖
 
-A powerful Model Context Protocol (MCP) server that enhances Large Language Models (LLMs) with advanced sequential thinking capabilities. Built on the Model Context Protocol standard, this server enables AI agents to perform structured reasoning, maintain context, and execute complex cognitive tasks with high precision.
+A powerful Model Context Protocol (MCP) server that enhances Large Language Models (LLMs) with advanced sequential thinking capabilities. Built on the [Model Context Protocol](https://github.com/VitalyMalakanov/mcp-thinking) standard, this server enables AI agents to perform structured reasoning and execute complex cognitive tasks with high precision.
 
-## What is MCP?
+## 📑 Table of Contents
 
-Model Context Protocol (MCP) is a standardized framework for managing AI agent interactions, context handling, and tool execution. It provides a robust foundation for building sophisticated AI applications that can:
+- [Overview](#overview)
+- [Quick Start](#-quick-start)
+- [Key Features](#-key-features)
+- [Thinking Modes](#-thinking-modes)
+- [Use Cases](#-use-cases)
+- [Session Management](#-session-management)
+- [API Reference](#-api-reference)
+- [Security & Performance](#-security--performance)
+- [Community & Support](#-community--support)
+- [Project Info](#-project-info)
 
-- Maintain coherent conversation context
-- Execute complex reasoning chains
-- Manage tool interactions
-- Handle multi-step cognitive processes
-- Adapt thinking strategies dynamically
+## Overview
 
-## Key Features
+MCP Thinking is a sophisticated AI reasoning engine that provides:
+- Advanced sequential thinking with 19 distinct modes
+- Robust context management and session handling
+- Metacognitive analysis and adaptive planning
+- Multi-modal reasoning and quality assessment
 
-- **Advanced Sequential Thinking:** Structured reasoning with 19 distinct thinking modes
-- **Context Management:** Robust session handling with UUID-based identification
-- **Metacognitive Analysis:** Deep insights into reasoning quality and process
-- **Adaptive Planning:** Dynamic strategy adjustment based on context
-- **Multi-modal Reasoning:** Support for linear, tree, dialectical, and other thinking patterns
-- **Quality Assessment:** Automatic evaluation of thought clarity and coherence
-- **Session Management:** Comprehensive tools for session analysis and export
-- **Multi-language Support:** Built-in localization for diverse language needs
+Built with [FastAPI](https://fastapi.tiangolo.com/) and [Pydantic](https://docs.pydantic.dev/), it offers a modern, async-first approach to AI reasoning.
 
-## 👨‍💻 Author
-[Vitaly Malakanov](https://github.com/VitalyMalakanov)
+## 🏗️ Architecture
 
-## 🚀 Project Status
-![Stable](https://img.shields.io/badge/status-stable-green.svg)
-![Python 3.13+](https://img.shields.io/badge/python-3.13%2B-blue.svg)
-![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+### System Overview
+```mermaid
+graph TB
+    Client[Client Application] -->|SSE Connection| Server[MCP Server]
+    Server -->|Process| Thinking[Thinking Engine]
+    Thinking -->|Manage| Sessions[Session Manager]
+    Thinking -->|Execute| Tools[Tool Executor]
+    Thinking -->|Analyze| Metacognition[Metacognitive Analyzer]
+    
+    subgraph "MCP Server Components"
+        Sessions
+        Tools
+        Metacognition
+    end
+    
+    subgraph "Thinking Modes"
+        Linear[Linear Thinking]
+        Tree[Tree Thinking]
+        Dialectical[Dialectical Thinking]
+        Creative[Creative Thinking]
+    end
+    
+    Thinking --> Linear
+    Thinking --> Tree
+    Thinking --> Dialectical
+    Thinking --> Creative
+```
 
-## ✨ Features
+### Session Flow
+```mermaid
+sequenceDiagram
+    participant Client
+    participant Server
+    participant Session
+    participant Engine
+    
+    Client->>Server: Connect (SSE)
+    Server->>Session: Create Session
+    Session-->>Client: Session ID
+    
+    loop Thinking Process
+        Client->>Server: Send Thought
+        Server->>Engine: Process Thought
+        Engine->>Session: Update Context
+        Session-->>Client: Analysis Result
+    end
+    
+    Client->>Server: Export Session
+    Server->>Session: Gather Data
+    Session-->>Client: Export Result
+```
 
-- **Tree-structured Thoughts:** Support for branching and merging complex ideas
-- **Metacognitive Analysis:** Deep insights into the quality and process of reasoning
-- **Logical Consistency Checking:** Automatic identification of contradictions and coherence issues
-- **Adaptive Planning:** Dynamic adjustment of thinking strategies based on context and effectiveness
-- **Confidence & Quality Assessment:** Evaluation of thought clarity, evidence strength, and novelty
-- **Cognitive Bias Detection:** Automated identification of common reasoning biases
-- **Session Management:** Tools for exporting and analyzing entire thinking sessions
-- **Multi-language Support:** Localized outputs and analysis markers via `localization.py` and `localization_markers.py`
+### Thinking Modes Interaction
+```mermaid
+graph LR
+    Input[Input Thought] --> Mode[Thinking Mode]
+    Mode --> Analysis[Analysis]
+    Mode --> Synthesis[Synthesis]
+    Mode --> Evaluation[Evaluation]
+    
+    Analysis --> Output[Output Thought]
+    Synthesis --> Output
+    Evaluation --> Output
+    
+    subgraph "Thinking Process"
+        Mode
+        Analysis
+        Synthesis
+        Evaluation
+    end
+```
 
 ## 🚀 Quick Start
 
+### Prerequisites
+- Python 3.13+
+- Git
+- pip (Python package manager)
+
+### Installation
     ```bash
 # Clone the repository
 git clone https://github.com/VitalyMalakanov/mcp-thinking.git
 cd mcp-thinking
+
+# Create and activate virtual environment (recommended)
+    python -m venv venv
+source venv/bin/activate  # Linux/macOS
+.\venv\Scripts\activate   # Windows
 
 # Install dependencies
     pip install -r requirements.txt
 
 # Start the server
 python enhanced_sequential_thinking_server.py
-    ```
-
-## 🚀 Usage
-
-### Running the Server
-
-#### Local Run
-```bash
-python enhanced_sequential_thinking_server.py
 ```
+
 The server will be available at `http://localhost:8000/sse`
 
-#### Docker Run
-If using Docker, the server will be available at `http://localhost:5000/sse`
-
-To change the default port (e.g., to 8080):
+### Docker Support
 ```bash
+# Using Docker
+docker-compose up
+
+# Custom port
 MCP_SERVER_PORT=8080 docker-compose up
 ```
 
-### Language Selection
+## ✨ Key Features
 
-#### Local Run
-To switch to Russian, set the environment variable:
-```bash
-# Windows PowerShell
-$env:LANG="ru"
-python enhanced_sequential_thinking_server.py
+- **🤖 Advanced Thinking**
+  - 19 distinct thinking modes
+  - Tree-structured thoughts
+  - Metacognitive analysis
+  - Logical consistency checking
 
-# Windows Command Prompt
-set LANG=ru
-python enhanced_sequential_thinking_server.py
+- **🔄 Session Management**
+  - UUID-based identification
+  - Robust context handling
+  - Comprehensive export tools
+  - Multi-session support
 
-# macOS/Linux
-LANG=ru python enhanced_sequential_thinking_server.py
-```
+- **🔍 Quality & Analysis**
+  - Confidence assessment
+  - Cognitive bias detection
+  - Adaptive planning
+  - Multi-language support
 
-#### Docker Run
-Add to your `docker-compose.yml`:
-```yaml
-services:
-  mcp-server:
-    environment:
-      - LANG=ru
-```
-
-Or set directly when running:
-```bash
-LANG=ru docker-compose up
-```
-
-### Use Cases for AI Agents
-
-The Enhanced Sequential Thinking Server provides powerful tools for AI agents to enhance their reasoning capabilities. Here are some practical use cases:
-
-#### 1. Complex Problem Solving
-AI agents can use the server to break down complex problems into manageable thought chains:
-
-```python
-# Example: Solving a complex business strategy problem
-thought_chain = [
-    EnhancedThinkingInput(
-        thought="Analyze current market conditions and identify key trends",
-        thought_type=ThoughtType.ANALYSIS,
-        strategy=ThinkingStrategy.SYSTEMIC,
-        tags=["market_analysis", "trends"]
-    ),
-    EnhancedThinkingInput(
-        thought="Evaluate potential risks and opportunities in identified trends",
-        thought_type=ThoughtType.EVALUATION,
-        strategy=ThinkingStrategy.CRITICAL,
-        tags=["risk_assessment", "opportunities"]
-    ),
-    EnhancedThinkingInput(
-        thought="Generate strategic recommendations based on analysis",
-        thought_type=ThoughtType.HYPOTHESIS,
-        strategy=ThinkingStrategy.CREATIVE,
-        tags=["strategy", "recommendations"]
-    )
-]
-```
-
-#### 2. Research and Analysis
-For research tasks, agents can utilize different thinking strategies:
-
-- **Linear Analysis** for step-by-step research:
-  ```python
-  EnhancedThinkingInput(
-      thought="Review existing literature on quantum computing applications",
-      thought_type=ThoughtType.ANALYSIS,
-      strategy=ThinkingStrategy.LINEAR,
-      tags=["research", "literature_review"]
-  )
-  ```
-
-- **Divergent Thinking** for exploring multiple perspectives:
-  ```python
-  EnhancedThinkingInput(
-      thought="Explore alternative approaches to renewable energy storage",
-      thought_type=ThoughtType.QUESTION,
-      strategy=ThinkingStrategy.DIVERGENT,
-      tags=["innovation", "energy_storage"]
-  )
-  ```
-
-#### 3. Decision Making
-Agents can use the server for structured decision-making processes:
-
-1. **Observation Phase**:
-   ```python
-   EnhancedThinkingInput(
-       thought="Current system performance metrics and user feedback",
-       thought_type=ThoughtType.OBSERVATION,
-       strategy=ThinkingStrategy.LINEAR,
-       tags=["metrics", "feedback"]
-   )
-   ```
-
-2. **Analysis Phase**:
-   ```python
-   EnhancedThinkingInput(
-       thought="Evaluate impact of potential system changes",
-       thought_type=ThoughtType.ANALYSIS,
-       strategy=ThinkingStrategy.CRITICAL,
-       tags=["impact_analysis", "system_changes"]
-   )
-   ```
-
-3. **Strategy Adaptation**:
-   ```python
-   StrategyAdaptationInput(
-       current_strategy=ThinkingStrategy.CRITICAL,
-       effectiveness_score=0.8,
-       context="System optimization decision",
-       constraints=["time", "resources"]
-   )
-   ```
-
-#### 4. Creative Problem Solving
-For creative tasks, agents can combine different thinking strategies:
-
-```python
-# Example: Product innovation process
-creative_chain = [
-    EnhancedThinkingInput(
-        thought="Identify user pain points in current solutions",
-        thought_type=ThoughtType.OBSERVATION,
-        strategy=ThinkingStrategy.LINEAR,
-        tags=["user_research", "pain_points"]
-    ),
-    EnhancedThinkingInput(
-        thought="Generate innovative solution concepts",
-        thought_type=ThoughtType.HYPOTHESIS,
-        strategy=ThinkingStrategy.CREATIVE,
-        tags=["innovation", "concepts"]
-    ),
-    EnhancedThinkingInput(
-        thought="Evaluate feasibility and potential impact",
-        thought_type=ThoughtType.EVALUATION,
-        strategy=ThinkingStrategy.STRATEGIC,
-        tags=["feasibility", "impact"]
-    )
-]
-```
-
-#### 5. Metacognitive Analysis
-Agents can use metacognitive reflection to improve their thinking processes:
-
-```python
-# Example: Improving reasoning quality
-MetacognitionInput(
-    focus_area="Quality of market analysis",
-    analysis_depth=3
-)
-```
-
-#### 6. Quality Assurance
-For validation and verification tasks:
-
-```python
-# Example: Code review process
-qa_chain = [
-    EnhancedThinkingInput(
-        thought="Review code for potential security vulnerabilities",
-        thought_type=ThoughtType.ANALYSIS,
-        strategy=ThinkingStrategy.CRITICAL,
-        tags=["security", "code_review"]
-    ),
-    EnhancedThinkingInput(
-        thought="Evaluate code maintainability and scalability",
-        thought_type=ThoughtType.EVALUATION,
-        strategy=ThinkingStrategy.SYSTEMIC,
-        tags=["maintainability", "scalability"]
-    )
-]
-```
-
-Each use case demonstrates how AI agents can leverage the server's tools to:
-- Structure complex reasoning processes
-- Maintain logical consistency
-- Adapt thinking strategies based on context
-- Track and analyze thought patterns
-- Generate well-reasoned conclusions
-- Improve decision-making quality
-
-The server's ability to handle different types of thoughts (analysis, hypothesis, evaluation, etc.) and thinking strategies (linear, critical, creative, etc.) makes it particularly valuable for AI agents working on complex, multi-step tasks that require sophisticated reasoning capabilities.
+- **⚡ Performance**
+  - Async-first architecture
+  - Efficient resource management
+  - Horizontal scaling support
+  - Optimized session handling
 
 ## 🧠 Thinking Modes
 
@@ -868,22 +768,21 @@ Common issues and their solutions:
 
 ### Core Endpoints
 
-#### SSE Connection
-
-```bash
-# Connect to the MCP Thinking server
-curl http://localhost:8000/sse
-```
-
-#### Message Processing
-```http
-POST /messages/?session_id={session_id}
-```
-Processes thinking requests within a session.
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/sse` | GET | Establish SSE connection |
+| `/messages` | POST | Process thinking requests |
+| `/health` | GET | Health check endpoint |
 
 ### Request Types
 
-#### Enhanced Thinking
+| Type | Description | Example |
+|------|-------------|---------|
+| Enhanced Thinking | Process thoughts | [View Example](#enhanced-thinking) |
+| Metacognitive | Analyze thinking | [View Example](#metacognitive-reflection) |
+| Strategy Adaptation | Adapt thinking | [View Example](#strategy-adaptation) |
+
+### Enhanced Thinking
 ```python
 {
     "thought": "string",
@@ -893,7 +792,7 @@ Processes thinking requests within a session.
 }
 ```
 
-#### Metacognitive Reflection
+### Metacognitive Reflection
 ```python
 {
     "focus_area": "string",
@@ -901,7 +800,7 @@ Processes thinking requests within a session.
 }
 ```
 
-#### Strategy Adaptation
+### Strategy Adaptation
 ```python
 {
     "current_strategy": "string",
@@ -974,13 +873,13 @@ We welcome contributions! Here's how you can help:
 
 ## 📊 Project Statistics
 
-![GitHub Stars](https://img.shields.io/github/stars/VitalyMalakanov/mcp-thinking?style=social)
-![GitHub Forks](https://img.shields.io/github/forks/VitalyMalakanov/mcp-thinking?style=social)
-![GitHub Issues](https://img.shields.io/github/issues/VitalyMalakanov/mcp-thinking)
-![GitHub Pull Requests](https://img.shields.io/github/issues-pr/VitalyMalakanov/mcp-thinking)
-![GitHub License](https://img.shields.io/github/license/VitalyMalakanov/mcp-thinking)
+[![GitHub Stars](https://img.shields.io/github/stars/VitalyMalakanov/mcp-thinking?style=social)](https://github.com/VitalyMalakanov/mcp-thinking/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/VitalyMalakanov/mcp-thinking?style=social)](https://github.com/VitalyMalakanov/mcp-thinking/network/members)
+[![GitHub Issues](https://img.shields.io/github/issues/VitalyMalakanov/mcp-thinking)](https://github.com/VitalyMalakanov/mcp-thinking/issues)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/VitalyMalakanov/mcp-thinking)](https://github.com/VitalyMalakanov/mcp-thinking/pulls)
+[![License: MIT](https://img.shields.io/github/license/VitalyMalakanov/mcp-thinking)](https://github.com/VitalyMalakanov/mcp-thinking/blob/master/LICENSE)
 
-## 🔍 Keywords and Tags
+## 🔍 Keywords
 
 #AI #MachineLearning #LLM #Reasoning #CognitiveComputing #Python #AsyncIO #FastAPI #MCP #ThinkingEngine #SequentialThinking #Metacognition #CognitiveArchitecture #AIReasoning #ThoughtChains #DecisionMaking #ProblemSolving #CognitiveScience #ArtificialIntelligence #MachineReasoning
 
@@ -1014,3 +913,165 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 - Pydantic for data validation
 - Uvicorn for ASGI server
 - The open-source community for inspiration and support
+
+## 💡 Use Cases
+
+### 1. Complex Problem Solving
+
+#### Business Strategy Analysis
+```mermaid
+graph TD
+    A[Market Analysis] -->|Systemic Thinking| B[Trend Identification]
+    B -->|Critical Thinking| C[Risk Assessment]
+    C -->|Creative Thinking| D[Strategy Development]
+    D -->|Strategic Thinking| E[Implementation Plan]
+    
+    style A fill:#f9f,stroke:#333
+    style B fill:#bbf,stroke:#333
+    style C fill:#bfb,stroke:#333
+    style D fill:#fbf,stroke:#333
+    style E fill:#fbb,stroke:#333
+```
+
+AI Agent Interaction Flow:
+1. Agent connects to MCP server using SSE endpoint
+2. Establishes session with unique UUID
+3. Sends sequential thoughts through MCP protocol
+4. Receives analysis and insights in real-time
+5. Adapts strategy based on metacognitive feedback
+
+### 2. Research and Analysis
+
+#### Literature Review Process
+```mermaid
+graph TD
+    A[Research Question] -->|Linear Thinking| B[Literature Search]
+    B -->|Analytical Thinking| C[Data Extraction]
+    C -->|Systemic Thinking| D[Pattern Analysis]
+    D -->|Critical Thinking| E[Synthesis]
+    E -->|Creative Thinking| F[New Insights]
+    
+    style A fill:#f9f,stroke:#333
+    style B fill:#bbf,stroke:#333
+    style C fill:#bfb,stroke:#333
+    style D fill:#fbf,stroke:#333
+    style E fill:#fbb,stroke:#333
+    style F fill:#bff,stroke:#333
+```
+
+MCP Protocol Flow:
+1. Agent initiates research session
+2. Uses MCP tools for structured analysis
+3. Maintains context through session management
+4. Receives real-time analysis results
+5. Exports findings in multiple formats
+
+### 3. Decision Making
+
+#### Decision Process Flow
+```mermaid
+graph TD
+    A[Problem Definition] -->|Observation| B[Data Collection]
+    B -->|Analysis| C[Option Generation]
+    C -->|Evaluation| D[Option Assessment]
+    D -->|Strategy| E[Decision]
+    E -->|Reflection| F[Implementation]
+    
+    style A fill:#f9f,stroke:#333
+    style B fill:#bbf,stroke:#333
+    style C fill:#bfb,stroke:#333
+    style D fill:#fbf,stroke:#333
+    style E fill:#fbb,stroke:#333
+    style F fill:#bff,stroke:#333
+```
+
+MCP Integration Points:
+1. Agent establishes decision-making session
+2. Uses MCP thinking modes for analysis
+3. Receives structured feedback
+4. Adapts strategy based on MCP insights
+5. Maintains decision context
+
+### 4. Creative Problem Solving
+
+#### Innovation Process
+```mermaid
+graph TD
+    A[Problem Space] -->|Divergent Thinking| B[Idea Generation]
+    B -->|Convergent Thinking| C[Solution Filtering]
+    C -->|Creative Thinking| D[Prototype Design]
+    D -->|Critical Thinking| E[Feasibility Check]
+    E -->|Strategic Thinking| F[Implementation]
+    
+    style A fill:#f9f,stroke:#333
+    style B fill:#bbf,stroke:#333
+    style C fill:#bfb,stroke:#333
+    style D fill:#fbf,stroke:#333
+    style E fill:#fbb,stroke:#333
+    style F fill:#bff,stroke:#333
+```
+
+MCP Agent Workflow:
+1. Agent connects to innovation session
+2. Utilizes multiple thinking modes
+3. Receives real-time creative feedback
+4. Maintains innovation context
+5. Exports creative process results
+
+### 5. Multi-Agent Collaboration
+
+#### Collaborative Problem Solving
+```mermaid
+graph TD
+    A[Problem Space] -->|Agent 1| B[Analysis]
+    B -->|Agent 2| C[Synthesis]
+    C -->|Agent 3| D[Evaluation]
+    D -->|Agent 4| E[Implementation]
+    
+    style A fill:#f9f,stroke:#333
+    style B fill:#bbf,stroke:#333
+    style C fill:#bfb,stroke:#333
+    style D fill:#fbf,stroke:#333
+    style E fill:#fbb,stroke:#333
+```
+
+MCP Multi-Agent Features:
+1. Shared session context
+2. Real-time agent coordination
+3. Structured communication
+4. Role-based thinking modes
+5. Collaborative metacognition
+
+### 6. Learning and Adaptation
+
+#### Adaptive Learning Process
+```mermaid
+graph TD
+    A[Learning Goal] -->|Observation| B[Experience]
+    B -->|Analysis| C[Pattern Recognition]
+    C -->|Synthesis| D[Knowledge Integration]
+    D -->|Evaluation| E[Strategy Adaptation]
+    
+    style A fill:#f9f,stroke:#333
+    style B fill:#bbf,stroke:#333
+    style C fill:#bfb,stroke:#333
+    style D fill:#fbf,stroke:#333
+    style E fill:#fbb,stroke:#333
+```
+
+MCP Learning Support:
+1. Structured learning sessions
+2. Metacognitive analysis
+3. Adaptive strategy selection
+4. Progress tracking
+5. Knowledge integration
+
+Each use case demonstrates how AI agents can leverage the MCP protocol to:
+- Establish structured thinking sessions
+- Utilize multiple thinking modes
+- Maintain coherent context
+- Receive real-time analysis
+- Adapt strategies based on feedback
+- Export results in various formats
+
+The MCP standard ensures consistent, reliable, and efficient interaction between AI agents and the thinking server, enabling complex cognitive tasks with high precision and adaptability.
