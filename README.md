@@ -116,49 +116,161 @@ Or set directly when running:
 LANG=ru docker-compose up
 ```
 
-### Client Interaction Example
+### Use Cases for AI Agents
+
+The Enhanced Sequential Thinking Server provides powerful tools for AI agents to enhance their reasoning capabilities. Here are some practical use cases:
+
+#### 1. Complex Problem Solving
+AI agents can use the server to break down complex problems into manageable thought chains:
+
 ```python
-import asyncio
-import json
-from mcp.client.session import ClientSession
-from mcp.client.sse import sse_client
-from enhanced_sequential_thinking_server import (
-    EnhancedThinkingInput,
-    ThoughtType,
-    ThinkingStrategy
-)
-
-async def main():
-    server_url = "http://localhost:8000/sse"  # Adjust port if different
-    print(f"Connecting to MCP server at {server_url}")
-
-    try:
-        async with sse_client(url=server_url, timeout=10) as (read_stream, write_stream):
-            session = ClientSession(read_stream, write_stream)
-            await session.initialize()
-            print("MCP session initialized. Calling tool...")
-
-            # Call enhanced_thinking tool
-            input_data = EnhancedThinkingInput(
-                thought="Consider the impact of decentralized autonomous organizations (DAOs) on traditional corporate governance models.",
-                thought_type=ThoughtType.ANALYSIS,
-                strategy=ThinkingStrategy.SYSTEMIC,
-                tags=["DAO", "governance", "blockchain"]
-            )
-            result = await session.call_tool("enhanced_thinking", input_data)
-            
-            print("\nTool 'enhanced_thinking' result:")
-            if result and result[0].text:
-                print(json.dumps(json.loads(result[0].text), indent=2))
-            else:
-                print("No result or empty result.")
-
-    except Exception as e:
-        print(f"Error during client interaction: {e}")
-
-if __name__ == "__main__":
-    asyncio.run(main())
+# Example: Solving a complex business strategy problem
+thought_chain = [
+    EnhancedThinkingInput(
+        thought="Analyze current market conditions and identify key trends",
+        thought_type=ThoughtType.ANALYSIS,
+        strategy=ThinkingStrategy.SYSTEMIC,
+        tags=["market_analysis", "trends"]
+    ),
+    EnhancedThinkingInput(
+        thought="Evaluate potential risks and opportunities in identified trends",
+        thought_type=ThoughtType.EVALUATION,
+        strategy=ThinkingStrategy.CRITICAL,
+        tags=["risk_assessment", "opportunities"]
+    ),
+    EnhancedThinkingInput(
+        thought="Generate strategic recommendations based on analysis",
+        thought_type=ThoughtType.HYPOTHESIS,
+        strategy=ThinkingStrategy.CREATIVE,
+        tags=["strategy", "recommendations"]
+    )
+]
 ```
+
+#### 2. Research and Analysis
+For research tasks, agents can utilize different thinking strategies:
+
+- **Linear Analysis** for step-by-step research:
+  ```python
+  EnhancedThinkingInput(
+      thought="Review existing literature on quantum computing applications",
+      thought_type=ThoughtType.ANALYSIS,
+      strategy=ThinkingStrategy.LINEAR,
+      tags=["research", "literature_review"]
+  )
+  ```
+
+- **Divergent Thinking** for exploring multiple perspectives:
+  ```python
+  EnhancedThinkingInput(
+      thought="Explore alternative approaches to renewable energy storage",
+      thought_type=ThoughtType.QUESTION,
+      strategy=ThinkingStrategy.DIVERGENT,
+      tags=["innovation", "energy_storage"]
+  )
+  ```
+
+#### 3. Decision Making
+Agents can use the server for structured decision-making processes:
+
+1. **Observation Phase**:
+   ```python
+   EnhancedThinkingInput(
+       thought="Current system performance metrics and user feedback",
+       thought_type=ThoughtType.OBSERVATION,
+       strategy=ThinkingStrategy.LINEAR,
+       tags=["metrics", "feedback"]
+   )
+   ```
+
+2. **Analysis Phase**:
+   ```python
+   EnhancedThinkingInput(
+       thought="Evaluate impact of potential system changes",
+       thought_type=ThoughtType.ANALYSIS,
+       strategy=ThinkingStrategy.CRITICAL,
+       tags=["impact_analysis", "system_changes"]
+   )
+   ```
+
+3. **Strategy Adaptation**:
+   ```python
+   StrategyAdaptationInput(
+       current_strategy=ThinkingStrategy.CRITICAL,
+       effectiveness_score=0.8,
+       context="System optimization decision",
+       constraints=["time", "resources"]
+   )
+   ```
+
+#### 4. Creative Problem Solving
+For creative tasks, agents can combine different thinking strategies:
+
+```python
+# Example: Product innovation process
+creative_chain = [
+    EnhancedThinkingInput(
+        thought="Identify user pain points in current solutions",
+        thought_type=ThoughtType.OBSERVATION,
+        strategy=ThinkingStrategy.LINEAR,
+        tags=["user_research", "pain_points"]
+    ),
+    EnhancedThinkingInput(
+        thought="Generate innovative solution concepts",
+        thought_type=ThoughtType.HYPOTHESIS,
+        strategy=ThinkingStrategy.CREATIVE,
+        tags=["innovation", "concepts"]
+    ),
+    EnhancedThinkingInput(
+        thought="Evaluate feasibility and potential impact",
+        thought_type=ThoughtType.EVALUATION,
+        strategy=ThinkingStrategy.STRATEGIC,
+        tags=["feasibility", "impact"]
+    )
+]
+```
+
+#### 5. Metacognitive Analysis
+Agents can use metacognitive reflection to improve their thinking processes:
+
+```python
+# Example: Improving reasoning quality
+MetacognitionInput(
+    focus_area="Quality of market analysis",
+    analysis_depth=3
+)
+```
+
+#### 6. Quality Assurance
+For validation and verification tasks:
+
+```python
+# Example: Code review process
+qa_chain = [
+    EnhancedThinkingInput(
+        thought="Review code for potential security vulnerabilities",
+        thought_type=ThoughtType.ANALYSIS,
+        strategy=ThinkingStrategy.CRITICAL,
+        tags=["security", "code_review"]
+    ),
+    EnhancedThinkingInput(
+        thought="Evaluate code maintainability and scalability",
+        thought_type=ThoughtType.EVALUATION,
+        strategy=ThinkingStrategy.SYSTEMIC,
+        tags=["maintainability", "scalability"]
+    )
+]
+```
+
+Each use case demonstrates how AI agents can leverage the server's tools to:
+- Structure complex reasoning processes
+- Maintain logical consistency
+- Adapt thinking strategies based on context
+- Track and analyze thought patterns
+- Generate well-reasoned conclusions
+- Improve decision-making quality
+
+The server's ability to handle different types of thoughts (analysis, hypothesis, evaluation, etc.) and thinking strategies (linear, critical, creative, etc.) makes it particularly valuable for AI agents working on complex, multi-step tasks that require sophisticated reasoning capabilities.
 
 ## 📁 Project Structure
 - `enhanced_sequential_thinking_server.py` - Main server application and core thought analysis logic
