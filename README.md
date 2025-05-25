@@ -272,6 +272,392 @@ Each use case demonstrates how AI agents can leverage the server's tools to:
 
 The server's ability to handle different types of thoughts (analysis, hypothesis, evaluation, etc.) and thinking strategies (linear, critical, creative, etc.) makes it particularly valuable for AI agents working on complex, multi-step tasks that require sophisticated reasoning capabilities.
 
+## 🧠 Thinking Modes
+
+The Enhanced Sequential Thinking Server supports 19 distinct thinking modes, each designed for specific types of cognitive tasks:
+
+### Linear Thinking
+- **Purpose:** Sequential, step-by-step reasoning
+- **Best for:** 
+  - Breaking down complex problems into manageable steps
+  - Following logical sequences
+  - Building structured arguments
+- **Characteristics:**
+  - Clear cause-and-effect relationships
+  - Predictable progression
+  - Systematic approach
+- **Example Use:**
+  ```python
+  EnhancedThinkingInput(
+      thought="Implementing a new feature requires: 1) Requirements analysis, 2) Design, 3) Development, 4) Testing",
+      thought_type=ThoughtType.ANALYSIS,
+      strategy=ThinkingStrategy.LINEAR,
+      tags=["process", "implementation"]
+  )
+  ```
+
+### Tree Thinking
+- **Purpose:** Exploring multiple branches of thought
+- **Best for:**
+  - Exploring alternatives
+  - Decision tree analysis
+  - Complex problem decomposition
+- **Characteristics:**
+  - Branching exploration
+  - Multiple paths
+  - Hierarchical structure
+- **Example Use:**
+  ```python
+  EnhancedThinkingInput(
+      thought="Exploring different approaches to market entry: direct sales, partnerships, acquisitions",
+      thought_type=ThoughtType.ANALYSIS,
+      strategy=ThinkingStrategy.TREE,
+      tags=["strategy", "exploration"]
+  )
+  ```
+
+### Dialectical Thinking
+- **Purpose:** Resolving contradictions through synthesis
+- **Best for:**
+  - Resolving conflicts
+  - Finding common ground
+  - Developing comprehensive solutions
+- **Characteristics:**
+  - Thesis-antithesis-synthesis
+  - Conflict resolution
+  - Integration of opposites
+- **Example Use:**
+  ```python
+  EnhancedThinkingInput(
+      thought="Analyzing opposing views on remote work: productivity vs. collaboration, finding optimal balance",
+      thought_type=ThoughtType.ANALYSIS,
+      strategy=ThinkingStrategy.DIALECTICAL,
+      tags=["conflict", "resolution"]
+  )
+  ```
+
+### Systematic Thinking
+- **Purpose:** Methodical component-based analysis
+- **Best for:**
+  - Complex system analysis
+  - Process optimization
+  - Quality improvement
+- **Characteristics:**
+  - Component-based analysis
+  - Methodical approach
+  - Systematic evaluation
+- **Example Use:**
+  ```python
+  EnhancedThinkingInput(
+      thought="Analyzing software architecture components: frontend, backend, database, and their interactions",
+      thought_type=ThoughtType.ANALYSIS,
+      strategy=ThinkingStrategy.SYSTEMATIC,
+      tags=["architecture", "analysis"]
+  )
+  ```
+
+### Creative Thinking
+- **Purpose:** Generating novel ideas and solutions
+- **Best for:**
+  - Brainstorming sessions
+  - Innovation challenges
+  - Problem-solving with multiple solutions
+- **Characteristics:**
+  - Divergent idea generation
+  - Pattern breaking
+  - Novel connections
+- **Example Use:**
+  ```python
+  EnhancedThinkingInput(
+      thought="Exploring unconventional approaches to renewable energy storage using biomimicry principles",
+      thought_type=ThoughtType.HYPOTHESIS,
+      strategy=ThinkingStrategy.CREATIVE,
+      tags=["innovation", "biomimicry"]
+  )
+  ```
+
+### Analytical Thinking
+- **Purpose:** Strict logical analysis and reasoning
+- **Best for:**
+  - Data analysis
+  - Scientific research
+  - Technical problem-solving
+- **Characteristics:**
+  - Deductive reasoning
+  - Inductive reasoning
+  - Evidence-based conclusions
+- **Example Use:**
+  ```python
+  EnhancedThinkingInput(
+      thought="Analyzing market data trends: correlation analysis, statistical significance, predictive modeling",
+      thought_type=ThoughtType.ANALYSIS,
+      strategy=ThinkingStrategy.ANALYTICAL,
+      tags=["data", "analysis"]
+  )
+  ```
+
+### Metacognitive Thinking
+- **Purpose:** Self-analysis of thinking processes
+- **Best for:**
+  - Process improvement
+  - Learning optimization
+  - Strategy refinement
+- **Characteristics:**
+  - Self-reflection
+  - Process awareness
+  - Strategy evaluation
+- **Example Use:**
+  ```python
+  EnhancedThinkingInput(
+      thought="Reflecting on problem-solving approach: effectiveness, biases, and potential improvements",
+      thought_type=ThoughtType.METACOGNITION,
+      strategy=ThinkingStrategy.METACOGNITIVE,
+      tags=["reflection", "improvement"]
+  )
+  ```
+
+### Critical Thinking
+- **Purpose:** Analytical evaluation and assessment
+- **Best for:**
+  - Evaluating arguments and evidence
+  - Identifying logical fallacies
+  - Making informed decisions
+- **Characteristics:**
+  - Evidence-based reasoning
+  - Systematic evaluation
+  - Bias awareness
+- **Example Use:**
+  ```python
+  EnhancedThinkingInput(
+      thought="Analyzing the validity of market research data: sample size, methodology, potential biases",
+      thought_type=ThoughtType.EVALUATION,
+      strategy=ThinkingStrategy.CRITICAL,
+      tags=["analysis", "validation"]
+  )
+  ```
+
+### Systemic Thinking
+- **Purpose:** Understanding complex systems and their interactions
+- **Best for:**
+  - System analysis
+  - Understanding interdependencies
+  - Holistic problem-solving
+- **Characteristics:**
+  - Systems perspective
+  - Interconnection awareness
+  - Emergent behavior analysis
+- **Example Use:**
+  ```python
+  EnhancedThinkingInput(
+      thought="Analyzing the impact of climate change on global supply chains: direct effects, feedback loops, and systemic risks",
+      thought_type=ThoughtType.ANALYSIS,
+      strategy=ThinkingStrategy.SYSTEMIC,
+      tags=["systems", "climate"]
+  )
+  ```
+
+### Lateral Thinking
+- **Purpose:** Finding unconventional solutions
+- **Best for:**
+  - Creative problem-solving
+  - Breaking mental blocks
+  - Finding innovative solutions
+- **Characteristics:**
+  - Non-linear approach
+  - Pattern breaking
+  - Unconventional connections
+- **Example Use:**
+  ```python
+  EnhancedThinkingInput(
+      thought="Exploring unexpected applications of blockchain technology in healthcare data management",
+      thought_type=ThoughtType.HYPOTHESIS,
+      strategy=ThinkingStrategy.LATERAL,
+      tags=["innovation", "blockchain"]
+  )
+  ```
+
+### Strategic Thinking
+- **Purpose:** Long-term planning and goal-oriented reasoning
+- **Best for:**
+  - Strategic planning
+  - Resource allocation
+  - Risk assessment
+- **Characteristics:**
+  - Goal-oriented analysis
+  - Resource optimization
+  - Future-focused planning
+- **Example Use:**
+  ```python
+  EnhancedThinkingInput(
+      thought="Developing a 5-year technology roadmap considering market trends, resource constraints, and competitive landscape",
+      thought_type=ThoughtType.ANALYSIS,
+      strategy=ThinkingStrategy.STRATEGIC,
+      tags=["planning", "roadmap"]
+  )
+  ```
+
+### Empathetic Thinking
+- **Purpose:** Understanding others' perspectives
+- **Best for:**
+  - User experience design
+  - Conflict resolution
+  - Team collaboration
+- **Characteristics:**
+  - Perspective-taking
+  - Emotional awareness
+  - User-centered focus
+- **Example Use:**
+  ```python
+  EnhancedThinkingInput(
+      thought="Analyzing user feedback to understand pain points in the current interface design",
+      thought_type=ThoughtType.ANALYSIS,
+      strategy=ThinkingStrategy.EMPATHETIC,
+      tags=["ux", "feedback"]
+  )
+  ```
+
+### Abstract Thinking
+- **Purpose:** Working with models and generalizations
+- **Best for:**
+  - Theoretical analysis
+  - Model development
+  - Pattern recognition
+- **Characteristics:**
+  - Conceptual modeling
+  - Pattern abstraction
+  - Theoretical framework development
+- **Example Use:**
+  ```python
+  EnhancedThinkingInput(
+      thought="Developing a theoretical framework for understanding complex adaptive systems in organizations",
+      thought_type=ThoughtType.ANALYSIS,
+      strategy=ThinkingStrategy.ABSTRACT,
+      tags=["theory", "modeling"]
+  )
+  ```
+
+### Practical Thinking
+- **Purpose:** Focusing on implementation and results
+- **Best for:**
+  - Project execution
+  - Resource management
+  - Solution implementation
+- **Characteristics:**
+  - Action-oriented
+  - Resource-aware
+  - Results-focused
+- **Example Use:**
+  ```python
+  EnhancedThinkingInput(
+      thought="Planning the implementation of a new feature: resource allocation, timeline, and deliverables",
+      thought_type=ThoughtType.ANALYSIS,
+      strategy=ThinkingStrategy.PRACTICAL,
+      tags=["implementation", "planning"]
+  )
+  ```
+
+### Integrative Thinking
+- **Purpose:** Synthesizing different viewpoints
+- **Best for:**
+  - Complex problem-solving
+  - Multi-stakeholder analysis
+  - Holistic decision-making
+- **Characteristics:**
+  - Viewpoint synthesis
+  - Holistic integration
+  - Multi-perspective analysis
+- **Example Use:**
+  ```python
+  EnhancedThinkingInput(
+      thought="Integrating technical, business, and user perspectives in product development strategy",
+      thought_type=ThoughtType.SYNTHESIS,
+      strategy=ThinkingStrategy.INTEGRATIVE,
+      tags=["integration", "strategy"]
+  )
+  ```
+
+### Evolutionary Thinking
+- **Purpose:** Iterative development and adaptation
+- **Best for:**
+  - Product evolution
+  - Process improvement
+  - Continuous learning
+- **Characteristics:**
+  - Iterative approach
+  - Adaptation focus
+  - Continuous improvement
+- **Example Use:**
+  ```python
+  EnhancedThinkingInput(
+      thought="Analyzing product evolution through user feedback cycles and market adaptation",
+      thought_type=ThoughtType.ANALYSIS,
+      strategy=ThinkingStrategy.EVOLUTIONARY,
+      tags=["evolution", "adaptation"]
+  )
+  ```
+
+### Convergent Thinking
+- **Purpose:** Finding optimal solutions
+- **Best for:**
+  - Decision-making
+  - Solution optimization
+  - Problem resolution
+- **Characteristics:**
+  - Solution-focused
+  - Option narrowing
+  - Optimization-oriented
+- **Example Use:**
+  ```python
+  EnhancedThinkingInput(
+      thought="Evaluating and selecting the optimal cloud infrastructure solution based on requirements",
+      thought_type=ThoughtType.EVALUATION,
+      strategy=ThinkingStrategy.CONVERGENT,
+      tags=["decision", "optimization"]
+  )
+  ```
+
+### Divergent Thinking
+- **Purpose:** Exploring multiple perspectives and possibilities
+- **Best for:**
+  - Generating alternatives
+  - Exploring different viewpoints
+  - Challenging assumptions
+- **Characteristics:**
+  - Multiple solution generation
+  - Perspective shifting
+  - Assumption questioning
+- **Example Use:**
+  ```python
+  EnhancedThinkingInput(
+      thought="Exploring various approaches to urban transportation: autonomous vehicles, public transit, micro-mobility, and their combinations",
+      thought_type=ThoughtType.QUESTION,
+      strategy=ThinkingStrategy.DIVERGENT,
+      tags=["transportation", "urban_planning"]
+  )
+  ```
+
+### Reflective Thinking
+- **Purpose:** Self-analysis and learning
+- **Best for:**
+  - Process improvement
+  - Learning from experience
+  - Personal development
+- **Characteristics:**
+  - Self-reflection
+  - Experience analysis
+  - Learning extraction
+- **Example Use:**
+  ```python
+  EnhancedThinkingInput(
+      thought="Analyzing project outcomes and extracting key lessons for future improvements",
+      thought_type=ThoughtType.METACOGNITION,
+      strategy=ThinkingStrategy.REFLECTIVE,
+      tags=["reflection", "learning"]
+  )
+  ```
+
+Each thinking mode can be combined with different thought types (Analysis, Hypothesis, Evaluation, Observation, Question, etc.) to create powerful reasoning chains. The server's metacognitive analysis helps agents understand which thinking mode is most effective for specific tasks and adapt their approach accordingly.
+
 ## 📁 Project Structure
 - `enhanced_sequential_thinking_server.py` - Main server application and core thought analysis logic
 - `localization.py` - Centralized translations and language support utilities
