@@ -82,13 +82,9 @@ A powerful Model Context Protocol (MCP) server that enhances Large Language Mode
 
 ## Overview
 
-MCP Thinking is a sophisticated AI reasoning engine that provides:
-- Advanced sequential thinking with 19 distinct modes
-- Robust context management and session handling
-- Metacognitive analysis and adaptive planning
-- Multi-modal reasoning and quality assessment
+MCP Thinking Server is a powerful thinking engine built on the [Model Context Protocol (MCP)](https://github.com/modelcontextprotocol/modelcontextprotocol) standard. This server implements advanced thinking capabilities through a standardized interface, enabling AI agents to engage in complex cognitive processes.
 
-Built with [FastAPI](https://fastapi.tiangolo.com/) and [Pydantic](https://docs.pydantic.dev/), it offers a modern, async-first approach to AI reasoning.
+For detailed information about the MCP standard, please refer to the [official MCP specification](https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/SPECIFICATION.md).
 
 ## 🏗️ Architecture
 
@@ -1140,3 +1136,128 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 - Pydantic for data validation
 - Uvicorn for ASGI server
 - The open-source community for inspiration and support
+
+## Local Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/VitalyMalakanov/mcp-thinking.git
+cd mcp-thinking
+```
+
+2. Create and activate a virtual environment:
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
+
+3. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+The main dependencies include:
+- `mcp[cli,http]` - Core MCP protocol implementation
+- `fastapi` and `uvicorn` - Web server framework
+- `pydantic` - Data validation
+- `numpy` and `scikit-learn` - Data processing and analysis
+- `textstat` - Text analysis
+- `pytest` and `pytest-asyncio` - Testing framework
+- Additional dependencies for enhanced thinking capabilities
+
+## Client Interaction Example
+
+Here's a more detailed example of how to interact with the server:
+
+```python
+import asyncio
+import json
+from mcp.client.session import ClientSession
+from mcp.client.sse import sse_client
+from enhanced_sequential_thinking_server import EnhancedThinkingInput, ThoughtType, ThinkingStrategy
+
+async def main():
+    async with sse_client(url="http://localhost:8000/sse", timeout=20) as (read_stream, write_stream):
+        session = ClientSession(read_stream, write_stream)
+        await session.initialize()
+        
+        input_data = EnhancedThinkingInput(
+            thought="AI can significantly improve decision-making processes.",
+            thought_type=ThoughtType.ANALYSIS,
+            strategy=ThinkingStrategy.CRITICAL,
+            tags=["AI", "decision-making"]
+        )
+        
+        # Using model_dump() for Pydantic v2+
+        result_list = await session.call_tool("enhanced_thinking", input_data.model_dump())
+        
+        print("\nTool 'enhanced_thinking' result:")
+        if result_list and isinstance(result_list, list) and len(result_list) > 0:
+            # MCP tools typically return a single TextContent in the list for non-streaming responses
+            content_item = result_list[0]
+            if content_item.type == "text":
+                try:
+                    # Attempt to parse JSON if expected
+                    data = json.loads(content_item.text)
+                    print(json.dumps(data, indent=2, ensure_ascii=False))
+                except json.JSONDecodeError:
+                    # If not JSON, print the text directly
+                    print(content_item.text)
+            else:
+                print(content_item)  # For other content types
+        else:
+            print("No result or empty result list.")
+        
+        await session.close()
+
+if __name__ == "__main__":
+    asyncio.run(main())
+
+## Docker Testing
+
+To run tests in a Docker environment:
+
+1. Ensure your `docker-compose.yml` includes a service for running tests:
+```yaml
+services:
+  mcp-server:
+    build: .
+    volumes:
+      - .:/app
+    environment:
+      - LANG=en_US.UTF-8
+      
+  mcp-tests:
+    build: .
+    volumes:
+      - .:/app
+    command: pytest tests/
+    depends_on:
+      - mcp-server
+```
+
+2. Run the tests:
+```bash
+docker-compose run --rm mcp-tests
+```
+
+## Localization
+
+The server supports multiple languages through environment variables:
+
+1. Using environment variable (recommended for production):
+```bash
+export LANG=ru_RU.UTF-8  # For Russian
+python enhanced_sequential_thinking_server.py
+```
+
+2. Programmatically (for development):
+```python
+from enhanced_sequential_thinking_server import EnhancedThinkingServer
+
+server = EnhancedThinkingServer(language="ru")  # For Russian
+```
+
+## Author
+
+Vitaly Malakanov
